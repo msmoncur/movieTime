@@ -2,15 +2,23 @@ const input = document.querySelector('#search')
 const button = document.querySelector('#submit')
 const form = document.querySelector('#formy')
 const resultsDiv = document.getElementById('results')
+const heading = document.querySelector('h1')
 
 async function getMovie() { 
     const searchTerm = input.value.trim()
     if(!searchTerm) return
 
+    //Johans Idea
+    if (searchTerm.toLowerCase() === "chicken little"){
+        heading.textContent = "Pollito Tito 🍗"
+    } else {
+        heading.textContent = "Movie Time"
+    }
+
     try { 
         const response = await fetch (`/movie?search=${encodeURIComponent(searchTerm)}`)
         if (!response.ok) {
-            throw newError(`Response status: ${response.status}`)
+            throw new Error(`Response status: ${response.status}`)
         }
 
         const data = await response.json()
@@ -27,7 +35,7 @@ async function getMovie() {
                     movieElement.classList.add('movie')
 
                     const titleElement = document.createElement('p')
-                    movieElement.textContent = movie.title
+                    titleElement.textContent = movie.title
 
                     const posterElement = document.createElement('img')
                     if (movie.poster_path) {
@@ -36,8 +44,8 @@ async function getMovie() {
                         posterElement.src = 'https://via.placeholder.com/500x750?text=No+Image+Available'
                     }
 
-                    movieElement.appendChild(titleElement)
                     movieElement.appendChild(posterElement)
+                    movieElement.appendChild(titleElement)
                     resultsDiv.appendChild(movieElement)
                 })
             }

@@ -11,18 +11,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
     flex-direction: column;
-}
-
-.container {
-    width: 80%;
-    max-width: 800px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    min-height: 100vh;
+    overflow:auto; 
+    width: 100%; 
 }
 
 form {
@@ -37,7 +29,6 @@ input[type="text"] {
     font-size: 16px;
     width: 70%;
     max-width: 500px;
-    /* border: 1px solid #ccc; */
     border-radius: 20px;
     margin-right: 10px;
 }
@@ -45,6 +36,8 @@ input[type="text"] {
 h1 {
     text-align: center;
     color:#fff;
+    margin-bottom: 10px;
+    font-size: 2rem; 
 }
 
 #description {
@@ -100,5 +93,68 @@ button {
 p {
     font-size: 16px;
     color: #000000;
+}
+
+/* Responsiveness */
+
+/* tablets */
+@media (max-width: 768px) {
+    input[type="text"] {
+        width: 60%;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .movie {
+        width: 180px;
+    }
+
+    .movie p {
+        font-size: 16px;
+    }
+}
+
+/* mobiledevices */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    input[type="text"] {
+        width: 80%;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    #description {
+        font-size: 14px;
+    }
+
+    .movie {
+        width: 160px;
+    }
+
+    .movie p {
+        font-size: 14px;
+    }
+
+    #results {
+        flex-direction: column; 
+        align-items: center;
+    }
 }
 
